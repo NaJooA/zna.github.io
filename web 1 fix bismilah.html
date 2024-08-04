@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurusan Geoinformasi - Universitas Pertambangan Cepu</title>
+    <style>
+        :root {
+            --primary-color: #4a6741;
+            --secondary-color: #8e7451;
+            --accent-color: #d4ac6e;
+            --background-color: #f0ebe1;
+            --text-color: #2c3e50;
+            --light-text: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: var(--accent-color) 3px solid;
+        }
+
+        header a {
+            color: var(--light-text);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .highlight, header .current a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: var(--background-color);
+            font-weight: bold;
+        }
+
+        #showcase {
+            min-height: 400px;
+            background: linear-gradient(rgba(74, 103, 65, 0.7), rgba(142, 116, 81, 0.7)), url('https://example.com/geology-background.jpg') no-repeat center center/cover;
+            text-align: center;
+            color: var(--light-text);
+        }
+
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        #showcase p {
+            font-size: 20px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            font-size: 18px;
+            color: var(--light-text);
+            background-color: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background-color: var(--accent-color);
+        }
+
+        #features {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 40px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--accent-color);
+        }
+
+        #courses {
+            background-color: var(--background-color);
+            padding: 40px 0;
+        }
+
+        .course {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .course h3 {
+            color: var(--primary-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .project-item img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(74, 103, 65, 0.8);
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: .5s ease;
+        }
+
+        .project-item:hover .project-overlay {
+            height: 100%;
+        }
+
+        .project-text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #testimonials {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 40px 0;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .testimonial img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 15px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            color: var(--light-text);
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+        }
+
+        @media(max-width: 768px) {
+            .feature-grid, .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <!-- Header content sama seperti sebelumnya -->
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Jelajahi Dunia Melalui Geoinformasi</h1>
+            <p>Temukan rahasia bumi, eksplorasi sumber daya alam, dan bentuk masa depan planet kita</p>
+            <a href="#program" class="hero-cta">Pelajari Program Studi</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Mengapa Memilih Geoinformasi di Universitas Pertambangan Cepu?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-microscope feature-icon"></i>
+                    <h3>Laboratorium Canggih</h3>
+                    <p>Akses ke fasilitas penelitian terkini untuk analisis batuan, mineral, dan data geospasial.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-globe-americas feature-icon"></i>
+                    <h3>Kerjasama Internasional</h3>
+                    <p>Program pertukaran pelajar dan riset kolaboratif dengan universitas terkemuka dunia.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-hard-hat feature-icon"></i>
+                    <h3>Pengalaman Lapangan</h3>
+                    <p>Ekspedisi geologi reguler ke berbagai formasi geologi di seluruh Indonesia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program">
+        <div class="container">
+            <h2>Program Studi</h2>
+            <div class="course">
+                <h3>Geologi Dasar</h3>
+                <p>Pelajari konsep fundamental tentang struktur bumi, proses geologi, dan pembentukan batuan. Kursus ini mencakup:</p>
+                <ul>
+                    <li>Pengantar Struktur Bumi</li>
+                    <li>Tektonik Lempeng dan Pergerakannya</li>
+                    <li>Siklus Batuan dan Klasifikasi</li>
+                    <li>Proses Geomorfologi</li>
+                </ul>
+                <a href="#" class="button">Lihat Silabus</a>
+            </div>
+            <div class="course">
+                <h3>Geoinformasi Dasar</h3>
+                <p>Kuasai teknologi pemetaan digital dan analisis spasial untuk aplikasi geologi. Topik meliputi:</p>
+                <ul>
+                    <li>Dasar-dasar GIS dan Remote Sensing</li>
+                    <li>Pengolahan Data Geospasial</li>
+                    <li>Analisis Terrain Digital</li>
+                    <li>Aplikasi GIS dalam Manajemen Sumber Daya Alam</li>
+                </ul>
+                <a href="#" class="button">Eksplorasi Kurikulum</a>
+            </div>
+            <!-- Tambahkan kursus lainnya dengan format serupa -->
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Proyek Mahasiswa</h2>
+            <div class="project-gallery">
+                <div class="project-item">
+                    <img src="https://example.com/project1.jpg" alt="Pemetaan Geologi Gunung Merapi">
+                    <div class="project-overlay">
+                        <div class="project-text">Pemetaan Geologi Gunung Merapi</div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="https://example.com/project2.jpg" alt="Analisis Potensi Geotermal Dieng">
+                    <div class="project-overlay">
+                        <div class="project-text">Analisis Potensi Geotermal Dieng</div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="https://example.com/project3.jpg" alt="Studi Sedimentologi Delta Mahakam">
+                    <div class="project-overlay">
+                        <div class="project-text">Studi Sedimentologi Delta Mahakam</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>Apa Kata Alumni</h2>
+            <div class="testimonial">
+                <img src="https://example.com/alumni1.jpg" alt="Foto Alumni">
+                <blockquote>
+                    "Program Geoinformasi di UPC membuka mata saya terhadap kompleksitas dan keindahan bumi. Pengalaman lapangan yang saya dapatkan sangat berharga dalam karir saya di industri pertambangan."
+                </blockquote>
+                <p>- Budi Pratama, Geolog Senior PT Tambang Sejahtera</p>
+            </div>
+            <!-- Tambahkan testimonial lainnya -->
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2>Riset Terkini</h2>
+            <ul>
+                <li>
+                    <h3>Mitigasi Bencana Geologi di Wilayah Pesisir</h3>
+                    <p>Studi komprehensif tentang dampak perubahan iklim terhadap erosi pantai dan strategi adaptasinya.</p>
+                    <a href="#">Baca Abstrak</a>
+                </li>
+                <li>
+                    <h3>Eksplorasi Sumber Daya Mineral Bawah Laut</h3>
+                    <p>Pengembangan teknologi baru untuk pemetaan dan ekstraksi mineral dari dasar laut dalam.</p>
+                    <a href="#">Lihat Publikasi</a>
+                </li>
+                <!-- Tambahkan item riset lainnya -->
+            </ul>
+        </div>
+    </section>
+
+    <section id="partners">
+        <div class="container">
+            <h2>Mitra Industri</h2>
+            <p>Kami bekerja sama dengan perusahaan terkemuka untuk memberikan pengalaman industri yang relevan bagi mahasiswa kami:</p>
+            <div class="partner-logos">
+                <!-- Tambahkan logo perusahaan mitra -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Nama Anda" required>
+                <input type="email" name="email" placeholder="Email Anda" required>
+                <textarea name="message" placeholder="Pesan Anda" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Geoinformasi UPC</h3>
+                    <p>Jl. Geologi No. 123, Kota Cepu, Indonesia</p>
+                    <p>Email: info@geoinformasi.upc.ac.id</p>
+                    <p>Telp: (021) 1234-5678</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#program">Program Studi</a></li>
+                        <li><a href="#research">Riset</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-icons">
+                        <!-- Tambahkan ikon media sosial -->
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">Jurusan Geoinformasi - Universitas Pertambangan Cepu &copy; 2024. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript code untuk interaktivitas (sama seperti sebelumnya dengan beberapa tambahan)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode yang sudah ada
+
+            // Form submission handler
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Terima kasih! Pesan Anda telah terkirim.');
+                contactForm.reset();
+            });
+
+            function revealOnScroll() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 150;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
+                    } else {
+                        reveals[i].classList.remove("active");
+                    }
+                }
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
